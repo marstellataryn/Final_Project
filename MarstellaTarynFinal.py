@@ -16,9 +16,10 @@ class PhonebookApp:
         self.fax_var = tk.StringVar()
         self.phone_var = tk.StringVar()
 
-        # load adn resize images
+        # load and resize images
         self.add_icon = self.resize_image(tk.PhotoImage(file="entersign.png"), 25, 25)
         self.exit_icon = self.resize_image(tk.PhotoImage(file="exitsign.png"), 25, 25)
+       
         # list to save entries
         self.entries = []
 
@@ -52,17 +53,19 @@ class PhonebookApp:
         fax = self.fax_var.get()
         phone = self.phone_var.get()
 
-        # Perform input validation
+        # perform input validation
         if not all([facility_name, city, fax, phone]):
             messagebox.showwarning("Input Error", "All fields must be filled out.")
             return
-
+            
+        # store entered inputs
         entry = {
             "Facility Name": facility_name,
             "City": city,
             "Fax Number": fax,
             "Phone Number": phone
             }
+        
         self.entries.append(entry)
 
         self.sort_entries()
@@ -77,9 +80,11 @@ class PhonebookApp:
         self.phone_var.set("")
 
     def sort_entries(self):
+        # sort stored facilities alphabetically
         self.entries.sort(key=lambda x: x["Facility Name"].lower())
 
     def print_entries(self):
+        # create response fo no values
         if not self.entries:
             print("No entries to display.")
             return
@@ -93,8 +98,9 @@ class PhonebookApp:
     def show_entries(self):
         # callback function for "Show Entries" button
         self.print_entries()
-    # resize images
+   
     def resize_image(self, image, width, height):
+         # resize images
         return image.subsample(int(image.width() / width), int(image.height() / height))
 
 def main():
