@@ -88,7 +88,7 @@ class PhonebookApp:
         if not self.entries:
             print("No entries to display.")
             return
-        print("" * 31, "Facility Phonebook", "" * 31)
+        print(" " * 31, "Facility Phonebook", " " * 31)
         header = ["Facility Name", "City", "Fax Number", "Phone Number"]
         print("{:<20} {:<20} {:<20} {:<20}".format(*header))
         print("=" * 80)
