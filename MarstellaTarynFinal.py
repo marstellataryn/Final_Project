@@ -8,7 +8,7 @@ from tkinter import messagebox
 class PhonebookApp:
     def __init__(self, master):
         self.master = master
-        self.master.title("Facility Contact Info")
+        self.master.title("Facility PhoneBook")
 
         # variables to store inputs
         self.facility_name_var = tk.StringVar()
@@ -88,7 +88,7 @@ class PhonebookApp:
         if not self.entries:
             print("No entries to display.")
             return
-
+        print("" * 31, "Facility Phonebook", "" * 31)
         header = ["Facility Name", "City", "Fax Number", "Phone Number"]
         print("{:<20} {:<20} {:<20} {:<20}".format(*header))
         print("=" * 80)
